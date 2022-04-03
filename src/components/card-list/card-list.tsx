@@ -1,6 +1,10 @@
 import Card from "../card/card";
+import { IUser } from "../../interfaces/User/user";
 
-const CardList = ({ users }) => {
+interface ICardLIst{
+  users: IUser[]
+}
+const CardList = ({ users }:ICardLIst) => {
   return (
     <div>
       {users.map((user) => (
