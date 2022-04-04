@@ -1,5 +1,5 @@
 import './scroll.css';
-const Scroll = (props) => {
+const Scroll: React.FC = (props) => {
     return (
         <div className="scroll">
             {props.children}
@@ -7,3 +7,5 @@ const Scroll = (props) => {
 }
 
 export default Scroll;
+
+
