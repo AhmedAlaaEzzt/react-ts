@@ -9,7 +9,7 @@ const SearchBox = ({ value, searchChange }: ISearchBox) => {
         value={value}
         onChange={searchChange}
         type="search"
-        placeholder="search robots"
+        placeholder="search users"
       />
     </div>
   );
