@@ -1,7 +1,18 @@
 import { useState } from "react"
+import { IUser } from "../../interfaces/User/user";
+interface IUserForm {
+    addNewUser: (user: IUser) => void
+}
 
-const UserForm =()=>{
+
+
+const UserForm =({addNewUser}:IUserForm)=>{
     const [user, setUser] = useState({ id: -1, name: "", email: "" });
+
+    const addNew = () =>{
+        addNewUser(user);
+        setUser({ id: -1, name: "", email: "" })
+    }
 
     return <div>
         <label>Name:</label>
@@ -10,7 +21,7 @@ const UserForm =()=>{
         <label>Email:</label>
         <input value={user.email} onChange={e => setUser(Object.assign({}, user, { email: e.target.value }))} />
         <br />
-        <button >Add New</button>
+        <button onClick={addNew}>Add New</button>
     </div>
 }
 
