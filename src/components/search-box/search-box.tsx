@@ -1,6 +1,6 @@
 interface ISearchBox {
   value: string,
-  searchChange: () => void
+  searchChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 const SearchBox = ({ value, searchChange }: ISearchBox) => {
   return (
