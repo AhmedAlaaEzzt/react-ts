@@ -9,7 +9,7 @@ interface IFindUser {
 
 const FindUser = ({users}: IFindUser) => {
     const [searchField, setSearchField] = useState("");
-    const [user, setUser] = useState();
+    const [user, setUser] = useState<IUser | undefined>();
     const onSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchField(event.target.value)
     }
@@ -21,7 +21,7 @@ const FindUser = ({users}: IFindUser) => {
         <h3>Find User</h3>
         <SearchBox value={searchField} searchChange={onSearchChange} />
         <button onClick={onFindClick}>Find</button>
-        <Card  {...user} />
+        {user && <Card  {...user} />}
     </div>
 
 }
