@@ -1,28 +1,42 @@
-import { useState } from "react";
-import { IUser } from "../../interfaces/User/user";
+import { Component } from "react";
+
 import Card from "../card/card";
 import SearchBox from "../search-box/search-box";
 
-interface IFindUser {
-    users: IUser[]
-}
 
-const FindUser = ({users}: IFindUser) => {
-    const [searchField, setSearchField] = useState("");
-    const [user, setUser] = useState();
-    const onSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchField(event.target.value)
+class FindUser extends Component{
+
+    state = {
+        searchField: "",
+        user: undefined
     }
-    const onFindClick=()=>{
+
+    onSearchChange = (event: any) => {
+
+        this.setState(
+            { searchField: event.target.value }
+        )
+
+    }
+    onFindClick = () => {
+        const { searchField } = this.state;
+        const { users } = this.props
         const foundUser = users.find(user => user.name === searchField);
-        setUser(foundUser);
+        this.setState({
+            user: foundUser
+        })
     }
-    return <div>
-        <h3>Find User</h3>
-        <SearchBox value={searchField} searchChange={onSearchChange} />
-        <button onClick={onFindClick}>Find</button>
-        <Card  {...user} />
-    </div>
+
+    render() {
+        const { user, searchField } = this.state;
+        return <div>
+            <h3>Find User</h3>
+            <SearchBox value={searchField} searchChange={this.onSearchChange} />
+            <button onClick={this.onFindClick}>Find</button>
+            <Card  {...user} />
+        </div>
+    }
+
 
 }
 
