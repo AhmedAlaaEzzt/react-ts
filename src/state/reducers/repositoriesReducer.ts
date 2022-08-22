@@ -10,7 +10,12 @@ const initialState : RepositoriesState = {
   data: [],
 };
 
-const reducer = (state : RepositoriesState = initialState, action: any) : RepositoriesState => {
+interface Action{
+  type: string;
+  payload?: any; // ? means this property is optional
+}
+
+const reducer = (state : RepositoriesState = initialState, action: Action) : RepositoriesState => {
   switch (action.type) {
     case "search_repositories":
         return {...state, error: null, data: [], loading: true}
