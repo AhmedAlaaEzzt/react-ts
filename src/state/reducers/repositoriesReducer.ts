@@ -12,7 +12,7 @@ const initialState: RepositoriesState = {
   data: [],
 };
 
-const reducer = (
+const repositoriesReducer = (
   state: RepositoriesState = initialState,
   action: Action
 ): RepositoriesState => {
@@ -28,4 +28,4 @@ const reducer = (
   }
 };
 
-export default reducer;
+export default repositoriesReducer;
